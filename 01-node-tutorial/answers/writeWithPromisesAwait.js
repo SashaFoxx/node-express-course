@@ -21,3 +21,8 @@ async function readWrite() {
     await reader();
 }
 readWrite();
+
+//await writeFile("temp.txt","Line 1");
+//await writeFile("temp.txt","Line 2\n");
+//var test = await writeFile("temp.txt","Line 3");
+//return test // where test would be a promise
