@@ -45,8 +45,8 @@ function deletePerson(req, res) {
   if (updatedPeople.length < people.length) {
     // Person was deleted
     // people = updatedPeople; // Update the main people array
-    // res.status(204).send();
-    res.status(204).json({ people: updatedPeople, message: `Person with id ${id} deleted` })
+    // res.status(204).json({ people: updatedPeople, message: `Person with id ${id} deleted` })
+    res.status(204).send();
   } else {
     res.status(404).json({ message: "Person not found" });
   }
