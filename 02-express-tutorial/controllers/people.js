@@ -1,5 +1,4 @@
 const { people } = require("../data");
-console.log("people ====> ", people);
 
 function addPerson(req, res) {
   const { id, name } = req.body;
@@ -22,6 +21,7 @@ function getPersonById(req, res) {
     res.status(404).json({ message: "Person not found" });
   }
 }
+
 function updatePerson(req, res) {
   const id = parseInt(req.params.id);
   const personIndex = people.findIndex((p) => p.id === id);
@@ -38,11 +38,15 @@ function updatePerson(req, res) {
 function deletePerson(req, res) {
   const id = parseInt(req.params.id);
   const updatedPeople = people.filter((p) => p.id !== id);
+  console.log("updatedPeople ====> ", updatedPeople);
+  console.log("updatedPeople.length ====> ", updatedPeople.length);
+  console.log("people.length ====> ", people.length);
 
   if (updatedPeople.length < people.length) {
     // Person was deleted
-    people = updatedPeople; // Update the main people array
-    res.status(204).send();
+    // people = updatedPeople; // Update the main people array
+    // res.status(204).send();
+    res.status(204).json({ people: updatedPeople, message: `Person with id ${id} deleted` })
   } else {
     res.status(404).json({ message: "Person not found" });
   }
